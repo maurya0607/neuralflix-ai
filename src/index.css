@@ -1,0 +1,55 @@
+@import "tailwindcss";
+@import "./styles/animations.css";
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #222;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #333;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #222 #000;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: #000;
+  color: #fff;
+  overflow-x: hidden;
+  overscroll-behavior-y: auto;
+}
+
+@layer utilities {
+  .bg-glow {
+    background: radial-gradient(circle at center, rgba(120, 0, 255, 0.15), transparent 60%);
+  }
+  
+  .typewriter-text {
+    overflow: hidden;
+    white-space: pre-wrap;
+    margin: 0 auto;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
