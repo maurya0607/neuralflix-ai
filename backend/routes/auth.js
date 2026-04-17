@@ -75,8 +75,7 @@ router.get('/me', (req, res) => {
 
 // Helper to get frontend URL dynamically
 const getFrontendURL = (req) => {
-  const hostname = req.hostname; // This gets the IP or 'localhost'
-  return `http://${hostname}:5173`;
+  return process.env.FRONTEND_URL || `http://${req.hostname}:5173`;
 };
 
 // --- Google Authentication --- //
