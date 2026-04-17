@@ -1,13 +1,8 @@
 {
-  "functions": {
-    "backend/server.js": {
-      "maxDuration": 15
-    }
-  },
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "/backend/server.js"
+      "destination": "/api/index.js"
     },
     {
       "source": "/(.*)",
