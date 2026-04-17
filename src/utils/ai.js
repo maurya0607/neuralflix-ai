@@ -21,8 +21,10 @@
 //   }
 // };
 
-const BASE_HOST = window.location.hostname;
-const API_BASE = `http://${BASE_HOST}:5000/api`;
+import { API_BASE_URL } from '../config';
+
+const API_BASE = API_BASE_URL;
+
 
 export const generateProfessionalStory = async (formData) => {
   try {

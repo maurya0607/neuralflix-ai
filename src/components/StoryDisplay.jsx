@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { FiRefreshCcw, FiDownload, FiVolume2, FiVolumeX, FiPlus, FiImage, FiZap } from 'react-icons/fi';
 import MusicPlayer from './MusicPlayer';
 import { useTypewriter } from '../hooks/useTypewriter';
+import { API_BASE_URL } from '../config';
+
 
 export default function StoryDisplay({ story, onReset }) {
   const { displayedText, isComplete } = useTypewriter(story, 35);
@@ -41,7 +43,8 @@ export default function StoryDisplay({ story, onReset }) {
   const handleVisualize = async () => {
     setVisualLoading(true);
     try {
-      const response = await fetch(`http://${window.location.hostname}:5000/api/ai/visualize-prompt`, {
+      const response = await fetch(`${API_BASE_URL}/ai/visualize-prompt`, {
+
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ story })

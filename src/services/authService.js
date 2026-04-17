@@ -50,8 +50,10 @@
 // };
 
 
-const BASE_HOST = window.location.hostname;
-const API_URL = `http://${BASE_HOST}:5000/api/auth`;
+import { API_BASE_URL } from '../config';
+
+const API_URL = `${API_BASE_URL}/auth`;
+
 
 const fetchAPI = async (endpoint, options = {}) => {
   const response = await fetch(`${API_URL}${endpoint}`, {
