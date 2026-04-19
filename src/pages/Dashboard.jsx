@@ -256,7 +256,8 @@ export default function Dashboard() {
                     {story.protagonistName}'s Journey
                   </h3>
                   <span className="flex items-center gap-1 text-xs text-gray-600 rounded-full px-2 py-1" style={{ background: 'rgba(255,255,255,0.04)' }}>
-                    <FiClock size={10} /> {new Date(story.createdAt).toLocaleDateString()}
+                    {/* <FiClock size={10} /> {new Date(story.createdAt).toLocaleDateString()} */}
+                    <FiClock size={10} /> {new Date(story.createdAt).toLocaleDateString("en-GB")}
                   </span>
                 </div>
 
