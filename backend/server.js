@@ -9,20 +9,40 @@ dotenv.config();
 
 const app = express();
 
-// Middleware
+// Middleware — CORS whitelist for Vercel (prod) + localhost (dev)
+const allowedOrigins = [
+  process.env.FRONTEND_URL,      // e.g. https://vishwa-nova-ai.vercel.app
+  'http://localhost:5173',        // Vite dev server
+  'http://localhost:3000',
+].filter(Boolean);
+
 const corsOptions = {
-  origin: process.env.FRONTEND_URL || true, // Use FRONTEND_URL in production
+  origin: (origin, callback) => {
+    // Allow requests with no origin (curl, Postman, server-to-server)
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error(`CORS blocked for origin: ${origin}`));
+    }
+  },
   credentials: true,
 };
 app.use(cors(corsOptions));
 app.use(express.json());
 
+
 // Session Middleware
+const isProduction = process.env.NODE_ENV === 'production';
 app.use(session({
   secret: process.env.SESSION_SECRET || 'weboreel_secret_key_123',
   resave: false,
   saveUninitialized: false,
-  cookie: { maxAge: 24 * 60 * 60 * 1000 } // 1 day
+  cookie: {
+    maxAge: 24 * 60 * 60 * 1000, // 1 day
+    secure: isProduction,         // HTTPS only in prod
+    sameSite: isProduction ? 'none' : 'lax', // cross-origin cookies in prod
+    httpOnly: true,
+  }
 }));
 
 // Initialize Passport
@@ -45,8 +65,13 @@ app.use('/api/auth', require('./routes/auth'));
 app.use('/api/story', require('./routes/story'));
 app.use('/api/ai', require('./routes/ai'));
 
-// Start Server
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Backend Server is running on http://localhost:${PORT}`);
-});
+// Export app for Vercel serverless
+module.exports = app;
+
+// Start Server only when run directly (not via Vercel)
+if (require.main === module) {
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => {
+    console.log(`Backend Server is running on http://localhost:${PORT}`);
+  });
+}

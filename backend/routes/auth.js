@@ -5,7 +5,7 @@ const passport = require('passport');
 const User = require('../models/User');
 
 // --- Local Authentication --- //
-router.post('/signup', async (req, res) => {
+router.post('/signup', async (req, res, next) => {
   try {
     const { name, email, password } = req.body;
     
