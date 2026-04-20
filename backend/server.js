@@ -55,7 +55,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Database Connection
-const URI = process.env.MONGODB_URI || "mongodb://localhost:27017/weboreel_db";
+const URI = process.env.MONGODB_URI || process.env.MONGO_URI || "mongodb://localhost:27017/weboreel_db";
 mongoose.connect(URI)
   .then(() => console.log('Successfully connected to MongoDB '))
   .catch(err => console.error('MongoDB connection error:', err));
