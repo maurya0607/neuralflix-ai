@@ -1,16 +1,37 @@
-# React + Vite
+# VishwaNova AI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+VishwaNova AI is an AI-powered web application that generates cinematic story scripts and provides explanations through an interactive chat interface.
 
-Currently, two official plugins are available:
+## Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+ https://vishvanoraai.vercel.app
 
-## React Compiler
+## About the Project
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+VishwaNova AI is a full-stack application designed to help users generate structured movie-style scripts using artificial intelligence. 
 
-## Expanding the ESLint configuration
+Users provide inputs such as character name, dream, and struggles. Based on these inputs, the system generates a complete story script.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Additionally, the platform includes a chat interface where users can interact with the system to understand, refine, or explore different aspects of the generated script.
+
+## Features
+
+- User authentication (Login and Signup)
+- AI-based movie script generation
+- Interactive chat interface for script explanation
+- Save and manage generated scripts
+- Personal dashboard
+- Delete saved stories
+
+## Tech Stack
+
+- Frontend: React (Vite)
+- Backend: Node.js, Express
+- Database: MongoDB
+- Authentication: Passport.js with session-based authentication
+- Deployment: Vercel (Frontend) and Render (Backend)
+
+
+
+
+
