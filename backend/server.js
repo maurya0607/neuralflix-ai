@@ -62,7 +62,7 @@ mongoose.connect(URI)
 
 // Routes
 app.get('/', (req, res) => {
-  res.send('VishwaNova AI Backend is Running and Healthy!');
+  res.send('VishwaNova AI Backend is Running !');
 });
 
 app.use('/api/auth', require('./routes/auth'));
