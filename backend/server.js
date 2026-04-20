@@ -65,9 +65,13 @@ app.get('/', (req, res) => {
   res.send('VishwaNova AI Backend is Running !');
 });
 
-app.use('/api/auth', require('./routes/auth'));
-app.use('/api/story', require('./routes/story'));
-app.use('/api/ai', require('./routes/ai'));
+// app.use('/api/auth', require('./routes/auth'));
+// app.use('/api/story', require('./routes/story'));
+// app.use('/api/ai', require('./routes/ai'));
+
+app.use('/auth', require('./routes/auth'));
+app.use('/story', require('./routes/story'));
+app.use('/ai', require('./routes/ai'));
 
 // Export app for Vercel serverless
 module.exports = app;
