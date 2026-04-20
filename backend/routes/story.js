@@ -84,7 +84,8 @@ router.post('/', ensureAuth, async (req, res) => {
     }
 
     const newStory = await Story.create({
-      userId: req.user._id,
+      // userId: req.user._id,
+      userId: req.user?._id,
       protagonistName: name,
       dream,
       struggles,

@@ -23,7 +23,8 @@
 const isLocalhost = window.location.hostname === "localhost";
 
 // Local backend (for development)
-const DEV_API_URL = "http://localhost:5000/api";
+// const DEV_API_URL = "http://localhost:5000/api";
+const DEV_API_URL = "http://localhost:5000";
 
 // Production backend (from Vercel env)
 const PROD_API_URL = import.meta.env.VITE_API_URL;
